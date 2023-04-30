@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:students_app/screens/home_screen/views/home_screen.dart';
 
 import 'screens/splash_screen/views/splash_screen.dart';
 
@@ -12,10 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.brown,
       ),
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+      home: const CategoriesScreen(),
     );
   }
 }
