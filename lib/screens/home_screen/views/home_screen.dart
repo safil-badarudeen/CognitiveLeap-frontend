@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:students_app/screens/home_screen/views/widgets/categories_item_card.dart';
 import 'package:students_app/utils/color_constants.dart';
 import 'package:students_app/utils/image_constatns.dart';
+import 'package:students_app/widgets/custom_search_field.dart';
+
+List categoriescolorPalette = [
+  ColorConstant.mintyGreen,
+  ColorConstant.dullYellow,
+  ColorConstant.salmonPink,
+  ColorConstant.opal,
+];
 
 List categoriesDataList = [
-  [ColorConstant.mintyGreen, 'Fruits'],
-  [ColorConstant.dullYellow, 'Numbers'],
-  [ColorConstant.salmonPink, 'Vegetables'],
-  [ColorConstant.opal, 'Colours'],
-  [ColorConstant.mintyGreen, 'vehicles'],
-  [ColorConstant.dullYellow, 'Alphabeets'],
-  [ColorConstant.salmonPink, 'Trees'],
-  [ColorConstant.opal, 'Places'],
+  'Fruits',
+  'Numbers',
+  'Vegetables',
+  'Colours',
+  'vehicles',
+  'Alphabeets',
+  'Trees',
+  'Places',
 ];
 
 class CategoriesScreen extends StatelessWidget {
@@ -21,6 +30,7 @@ class CategoriesScreen extends StatelessWidget {
     // Mochiy Pop  P One
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: RefreshIndicator(
           onRefresh: () async {},
           child: Container(
@@ -37,53 +47,15 @@ class CategoriesScreen extends StatelessWidget {
                 child: Column(children: [
                   SizedBox(
                     height: 45,
-                    child: TextField(
-                      cursorColor: ColorConstant.mainBlack,
-                      decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.all(0),
-                        isDense: true,
-                        prefixIcon: const Icon(Icons.search),
-                        hintText: 'Search',
-                        filled: true,
-                        fillColor: ColorConstant.grey15,
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.circular(10)),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.circular(10)),
-                      ),
-                    ),
+                    child: CustomSearchField(),
                   ),
                   const SizedBox(height: 30),
                   ListView.separated(
                       padding: EdgeInsets.only(bottom: 20),
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) => Container(
-                            padding: const EdgeInsets.only(left: 20),
-                            decoration: BoxDecoration(
-                              color: categoriesDataList[index][0],
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  categoriesDataList[index][1],
-                                  style: TextStyle(
-                                      fontFamily: 'Mochiy Pop  P One',
-                                      fontSize: 26,
-                                      fontWeight: FontWeight.w400,
-                                      color: ColorConstant.mainWhite),
-                                ),
-                                Image.asset(
-                                  ImageConstants.img_fruits_category,
-                                  scale: 6.5,
-                                )
-                              ],
-                            ),
-                          ),
+                      itemBuilder: (context, index) =>
+                          CategoriesItemCard(index: index),
                       separatorBuilder: (context, index) => const SizedBox(
                             height: 15,
                           ),
