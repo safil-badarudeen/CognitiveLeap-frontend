@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ItemProvider extends ChangeNotifier {
-  int selectedItemId = 0;
+  // int selectedItemId = 0;
   int selectedItemIndex = 0;
-  void setSelectedItemId(int id, int index) {
-    selectedItemId = id;
+  void setSelectedItemId(int index) {
+    // selectedItemId = id;
     selectedItemIndex = index;
     notifyListeners();
   }

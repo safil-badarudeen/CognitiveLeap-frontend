@@ -90,7 +90,11 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.pop(context);
+                      if (snapshot.selectedItemIndex == 0) {
+                        return;
+                      }
+                      snapshot
+                          .setSelectedItemId(snapshot.selectedItemIndex - 1);
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -112,7 +116,12 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.pop(context);
+                      if (snapshot.selectedItemIndex ==
+                          snapshot.itemData.length - 1) {
+                        return;
+                      }
+                      snapshot
+                          .setSelectedItemId(snapshot.selectedItemIndex + 1);
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -138,13 +147,13 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
               SizedBox(
                 height: 100,
                 child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
                   itemCount: snapshot.itemData.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
-                        snapshot.setSelectedItemId(
-                            snapshot.itemData[index].id, index);
+                        snapshot.setSelectedItemId(index);
                       },
                       child: Container(
                           margin: const EdgeInsets.symmetric(horizontal: 10),
