@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:students_app/screens/detail_screen/item_detail_screen.dart';
 import 'package:students_app/screens/home_screen/views/widgets/categories_item_card.dart';
 import 'package:students_app/utils/color_constants.dart';
 import 'package:students_app/utils/image_constatns.dart';
@@ -45,17 +46,25 @@ class CategoriesScreen extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.only(top: 70, left: 15, right: 15),
                 child: Column(children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 45,
                     child: CustomSearchField(),
                   ),
                   const SizedBox(height: 30),
                   ListView.separated(
-                      padding: EdgeInsets.only(bottom: 20),
+                      padding: const EdgeInsets.only(bottom: 20),
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) =>
-                          CategoriesItemCard(index: index),
+                      itemBuilder: (context, index) => InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ItemDetailScreen(),
+                              ),
+                            );
+                          },
+                          child: CategoriesItemCard(index: index)),
                       separatorBuilder: (context, index) => const SizedBox(
                             height: 15,
                           ),
