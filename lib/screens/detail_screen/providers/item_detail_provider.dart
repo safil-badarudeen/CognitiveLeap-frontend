@@ -1,4 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:students_app/screens/detail_screen/model/item_model.dart';
+import 'package:http/http.dart' as http;
 
 class ItemProvider extends ChangeNotifier {
   // int selectedItemId = 0;
@@ -9,7 +13,32 @@ class ItemProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<ItemData> itemData = [
+  List<ItemDetailModel> itemDetailModel = [];
+  bool isGetAllCategoryDataLoading = false;
+
+  Future<void> getAllCategoryData() async {
+    try {
+      isGetAllCategoryDataLoading = true;
+      notifyListeners();
+
+      Uri url = Uri.parse(
+          'https://cognitive-leap-backend.onrender.com/api/v1/englishAlphabet/getAllAlphabet');
+
+      final response = await http.get(url);
+      log(url.toString(), name: 'URL');
+      log(response.statusCode.toString(), name: 'statusCode');
+      if (response.statusCode == 200) {
+        itemDetailModel = itemDetailModelFromJson(response.body);
+        isGetAllCategoryDataLoading = false;
+
+        notifyListeners();
+      } else {}
+    } catch (e) {
+      throw Exception('Failed to load data');
+    }
+  }
+
+  List<ItemData> itemDatas = [
     ItemData(
       id: 1,
       title: 'Apple',

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:students_app/screens/detail_screen/providers/item_detail_provider.dart';
@@ -10,6 +12,29 @@ class ItemDetailScreen extends StatefulWidget {
 }
 
 class _ItemDetailScreenState extends State<ItemDetailScreen> {
+  @override
+  void initState() {
+    Future.microtask(() {
+      Provider.of<ItemProvider>(context, listen: false).getAllCategoryData();
+    });
+    super.initState();
+  }
+
+  Color generateRandomColorFromList(List<Color> colorList) {
+    Random random = Random();
+    int index = random.nextInt(colorList.length);
+    return colorList[index];
+  }
+
+  List<Color> colors = [
+    Colors.red.withOpacity(0.5),
+    Colors.green.withOpacity(0.5),
+    Colors.blue.withOpacity(0.5),
+    Colors.yellow.withOpacity(0.5),
+    Colors.orange.withOpacity(0.5),
+    Colors.purple.withOpacity(0.5),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,48 +67,54 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
               ),
             ),
             const SizedBox(height: 30),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.4,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: snapshot.itemData[snapshot.selectedItemIndex].bgColor,
-                image: DecorationImage(
-                  image: NetworkImage(
-                    snapshot.itemData.first.imageUrl,
+            snapshot.isGetAllCategoryDataLoading
+                ? const Center(child: CircularProgressIndicator())
+                : Container(
+                    height: MediaQuery.of(context).size.height * 0.4,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: generateRandomColorFromList(colors),
+                      image: DecorationImage(
+                        image: NetworkImage(
+                          snapshot.itemDetailModel[snapshot.selectedItemIndex]
+                              .image,
+                        ),
+                        // fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                  // fit: BoxFit.cover,
-                ),
-              ),
-            ),
             const SizedBox(height: 20),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  snapshot.itemData[snapshot.selectedItemIndex].title,
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color:
-                        snapshot.itemData[snapshot.selectedItemIndex].bgColor,
-                    fontFamily: 'Mochiy Pop  P One',
+            snapshot.isGetAllCategoryDataLoading
+                ? const Center(child: CircularProgressIndicator())
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        snapshot
+                            .itemDetailModel[snapshot.selectedItemIndex].text,
+                        style: TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                          color: generateRandomColorFromList(colors),
+                          fontFamily: 'Mochiy Pop  P One',
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      Text(
+                        snapshot.itemDetailModel[snapshot.selectedItemIndex]
+                            .storyText,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                          fontFamily: 'Mochiy Pop  P One',
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                const SizedBox(height: 30),
-                Text(
-                  snapshot.itemData[snapshot.selectedItemIndex].description,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                    fontFamily: 'Mochiy Pop  P One',
-                  ),
-                ),
-              ],
-            ),
             const SizedBox(height: 40),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -116,7 +147,7 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                 InkWell(
                   onTap: () {
                     if (snapshot.selectedItemIndex ==
-                        snapshot.itemData.length - 1) {
+                        snapshot.itemDetailModel.length - 1) {
                       return;
                     }
                     snapshot.setSelectedItemId(snapshot.selectedItemIndex + 1);
@@ -146,7 +177,7 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
               height: 100,
               child: ListView.builder(
                 physics: const BouncingScrollPhysics(),
-                itemCount: snapshot.itemData.length,
+                itemCount: snapshot.itemDetailModel.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return InkWell(
@@ -157,10 +188,10 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                         margin: const EdgeInsets.symmetric(horizontal: 10),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: snapshot.itemData[index].bgColor,
+                          color: generateRandomColorFromList(colors),
                         ),
                         child: Image.network(
-                          snapshot.itemData[index].imageUrl,
+                          snapshot.itemDetailModel[index].image,
                           height: 80,
                           width: 80,
                         )),
