@@ -29,48 +29,46 @@ class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Mochiy Pop  P One
-    return SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: RefreshIndicator(
-          onRefresh: () async {},
-          child: Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                alignment: Alignment.topCenter,
-                image: AssetImage(ImageConstants.img_category_bg),
-              ),
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: RefreshIndicator(
+        onRefresh: () async {},
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              alignment: Alignment.topCenter,
+              image: AssetImage(ImageConstants.img_category_bg),
             ),
-            child: SingleChildScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              child: Container(
-                padding: const EdgeInsets.only(top: 70, left: 15, right: 15),
-                child: Column(children: [
-                  const SizedBox(
-                    height: 45,
-                    child: CustomSearchField(),
-                  ),
-                  const SizedBox(height: 30),
-                  ListView.separated(
-                      padding: const EdgeInsets.only(bottom: 20),
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) => InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const ItemDetailScreen(),
-                              ),
-                            );
-                          },
-                          child: CategoriesItemCard(index: index)),
-                      separatorBuilder: (context, index) => const SizedBox(
-                            height: 15,
-                          ),
-                      itemCount: categoriesDataList.length)
-                ]),
-              ),
+          ),
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Container(
+              padding: const EdgeInsets.only(top: 70, left: 15, right: 15),
+              child: Column(children: [
+                const SizedBox(
+                  height: 45,
+                  child: CustomSearchField(),
+                ),
+                const SizedBox(height: 30),
+                ListView.separated(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) => InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ItemDetailScreen(),
+                            ),
+                          );
+                        },
+                        child: CategoriesItemCard(index: index)),
+                    separatorBuilder: (context, index) => const SizedBox(
+                          height: 15,
+                        ),
+                    itemCount: categoriesDataList.length)
+              ]),
             ),
           ),
         ),

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:students_app/screens/home_screen/views/home_screen.dart';
 import 'package:students_app/utils/color_constants.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,14 +15,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () {}
-        //  => Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //       builder: (context) => HomeScreen(),
-        //     )
-        // )
-        );
+    Timer(
+        const Duration(seconds: 3),
+        () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const CategoriesScreen(),
+            )));
   }
 
   @override
@@ -37,11 +37,17 @@ class _SplashScreenState extends State<SplashScreen> {
           color: ColorConstant.mainWhite,
           child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Image.network(
+                  'https://learningworksforkids.com/wp-content/uploads/collect-app-icon.png',
+                  // height: 300,
+                  // width: 300,
+                ),
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 34, vertical: 16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 34, vertical: 16),
                   decoration: BoxDecoration(
                       color: ColorConstant.sunray,
                       borderRadius: BorderRadius.circular(50)),
