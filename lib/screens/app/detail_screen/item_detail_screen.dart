@@ -105,7 +105,8 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
             // ),
             // const SizedBox(height: 30),
 
-            snapshot.isGetAllCategoryDataLoading
+            snapshot.isGetAllCategoryDataLoading ||
+                    snapshot.itemDetailModel.isEmpty
                 ? const Center(child: CircularProgressIndicator())
                 : Container(
                     height: MediaQuery.of(context).size.height * 0.4,
@@ -123,7 +124,8 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                     ),
                   ),
             const SizedBox(height: 20),
-            snapshot.isGetAllCategoryDataLoading
+            snapshot.isGetAllCategoryDataLoading ||
+                    snapshot.itemDetailModel.isEmpty
                 ? const Center(child: CircularProgressIndicator())
                 : Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
