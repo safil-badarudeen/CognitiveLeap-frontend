@@ -1,9 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:students_app/screens/detail_screen/item_detail_screen.dart';
-import 'package:students_app/screens/home_screen/views/widgets/categories_item_card.dart';
+import 'package:students_app/screens/app/category_list/widgets/categories_item_card.dart';
+import 'package:students_app/screens/app/detail_screen/item_detail_screen.dart';
 import 'package:students_app/utils/color_constants.dart';
 import 'package:students_app/utils/image_constatns.dart';
-import 'package:students_app/widgets/custom_search_field.dart';
 
 List categoriescolorPalette = [
   ColorConstant.mintyGreen,
@@ -47,7 +47,7 @@ class CategoriesScreen extends StatelessWidget {
               child: Column(children: [
                 const SizedBox(
                   height: 45,
-                  child: CustomSearchField(),
+                  child: CupertinoSearchTextField(),
                 ),
                 const SizedBox(height: 30),
                 ListView.separated(

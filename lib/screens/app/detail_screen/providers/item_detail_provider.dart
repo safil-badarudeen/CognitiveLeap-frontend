@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:students_app/screens/detail_screen/model/item_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:students_app/screens/app/detail_screen/model/item_model.dart';
 
 class ItemProvider extends ChangeNotifier {
   // int selectedItemId = 0;

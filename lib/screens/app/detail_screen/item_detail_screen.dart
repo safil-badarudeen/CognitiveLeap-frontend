@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:students_app/screens/detail_screen/providers/item_detail_provider.dart';
+import 'package:students_app/screens/app/detail_screen/providers/item_detail_provider.dart';
 
 class ItemDetailScreen extends StatefulWidget {
   const ItemDetailScreen({Key? key}) : super(key: key);
@@ -48,11 +48,11 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
-                  children: const [
+                  children: [
                     Icon(Icons.arrow_back_ios),
                     Text(
                       'Back',
@@ -126,11 +126,11 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                     }
                     snapshot.setSelectedItemId(snapshot.selectedItemIndex - 1);
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: const [
+                      children: [
                         Icon(Icons.arrow_back_ios),
                         Text(
                           'Previous',
@@ -144,29 +144,25 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                     ),
                   ),
                 ),
-                InkWell(
-                  onTap: () {
-                    if (snapshot.selectedItemIndex ==
-                        snapshot.itemDetailModel.length - 1) {
-                      return;
-                    }
-                    snapshot.setSelectedItemId(snapshot.selectedItemIndex + 1);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        Text(
-                          'Next',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                        Icon(Icons.arrow_forward_ios),
-                      ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: TextButton.icon(
+                    icon: const Icon(Icons.arrow_forward_ios),
+                    onPressed: () {
+                      if (snapshot.selectedItemIndex ==
+                          snapshot.itemDetailModel.length - 1) {
+                        return;
+                      }
+                      snapshot
+                          .setSelectedItemId(snapshot.selectedItemIndex + 1);
+                    },
+                    label: const Text(
+                      'Next',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),

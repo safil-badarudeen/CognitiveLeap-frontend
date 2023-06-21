@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:students_app/screens/splash_screen/views/splash_screen.dart';
+import 'package:students_app/screens/auth/splash_screen/views/splash_screen.dart';
 
-import 'screens/detail_screen/providers/item_detail_provider.dart';
+import 'screens/app/detail_screen/providers/item_detail_provider.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());

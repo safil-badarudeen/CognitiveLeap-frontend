@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:students_app/screens/home_screen/views/home_screen.dart';
+import 'package:students_app/screens/app/category_list/category_list_screen.dart';
 import 'package:students_app/utils/color_constants.dart';
 import 'package:students_app/utils/image_constatns.dart';
 
