@@ -37,7 +37,7 @@ class CategoriesScreen extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
               alignment: Alignment.topCenter,
-              image: AssetImage(ImageConstants.img_category_bg),
+              image: AssetImage(ImageClass.img_category_bg),
             ),
           ),
           child: SingleChildScrollView(

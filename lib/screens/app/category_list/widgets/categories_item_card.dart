@@ -30,7 +30,7 @@ class CategoriesItemCard extends StatelessWidget {
                 color: ColorConstant.mainWhite),
           ),
           Image.asset(
-            ImageConstants.img_fruits_category,
+            ImageClass.img_fruits_category,
             scale: 6.5,
           )
         ],

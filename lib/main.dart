@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:students_app/screens/auth/splash_screen/views/splash_screen.dart';
+import 'package:students_app/provider/home_provider.dart';
+import 'package:students_app/screens/auth/splash_screen/splash_screen.dart';
 
 import 'screens/app/detail_screen/providers/item_detail_provider.dart';
 
@@ -15,8 +16,10 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ItemProvider()),
+        ChangeNotifierProvider(create: (_) => HomeProvider()),
       ],
       child: MaterialApp(
+        title: 'Cognitive Leap',
         theme: ThemeData(
           primarySwatch: Colors.brown,
         ),

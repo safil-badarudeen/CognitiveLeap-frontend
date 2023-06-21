@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:students_app/screens/app/category_list/category_list_screen.dart';
+import 'package:students_app/screens/app/user_mode_selection_screen/user_mode_selection_screen.dart';
 import 'package:students_app/utils/color_constants.dart';
+import 'package:students_app/utils/image_constatns.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -20,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
       () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const CategoriesScreen(),
+          builder: (context) => const UserModeSelectionSCreen(),
         ),
       ),
     );
@@ -42,11 +44,10 @@ class _SplashScreenState extends State<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.network(
-                  'https://learningworksforkids.com/wp-content/uploads/collect-app-icon.png',
-                  // height: 300,
-                  // width: 300,
-                ),
+                Image.asset(ImageClass.splashIcon
+                    // height: 300,
+                    // width: 300,
+                    ),
                 Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 34, vertical: 16),
