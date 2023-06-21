@@ -38,35 +38,73 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: const Text('Fruits'),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: TextButton.icon(
+              onPressed: () {},
+              label: const Text(
+                'Train Card',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'Montserrat',
+                ),
+              ),
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.blue.withOpacity(0.8),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              icon: const Icon(Icons.devices_other_sharp, color: Colors.white),
+            ),
+          ),
+        ],
+      ),
       body: Consumer<ItemProvider>(
         builder: (context, snapshot, child) => ListView(
           scrollDirection: Axis.vertical,
           padding:
               const EdgeInsets.only(top: 50, bottom: 15, left: 15, right: 15),
           children: [
-            InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.arrow_back_ios),
-                    Text(
-                      'Back',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 30),
+            // InkWell(
+            //   onTap: () {
+            //     Navigator.pop(context);
+            //   },
+            //   child: const Padding(
+            //     padding: EdgeInsets.symmetric(horizontal: 15),
+            //     child: Row(
+            //       mainAxisSize: MainAxisSize.min,
+            //       children: [
+            //         Icon(Icons.arrow_back_ios),
+            //         Text(
+            //           'Back',
+            //           style: TextStyle(
+            //             fontSize: 20,
+            //             fontWeight: FontWeight.bold,
+            //             color: Colors.black,
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+            // const SizedBox(height: 30),
+
             snapshot.isGetAllCategoryDataLoading
                 ? const Center(child: CircularProgressIndicator())
                 : Container(
