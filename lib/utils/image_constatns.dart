@@ -4,4 +4,6 @@ class ImageClass {
   static String img_fruits_category = 'assets/images/img_fruits_category.png';
   static String img_category_bg = 'assets/images/img_category_bg.jpg';
   static String splashIcon = 'assets/images/splash-icon.png';
+  static String teacher = 'assets/images/teacher.png';
+  static String student = 'assets/images/student.png';
 }

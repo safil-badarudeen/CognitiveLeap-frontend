@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:students_app/provider/home_provider.dart';
 import 'package:students_app/screens/app/category_list/category_list_screen.dart';
+import 'package:students_app/utils/image_constatns.dart';
 
 class UserModeSelectionSCreen extends StatefulWidget {
   const UserModeSelectionSCreen({super.key});
@@ -31,7 +32,7 @@ class _UserModeSelectionSCreenState extends State<UserModeSelectionSCreen> {
                         padding: const EdgeInsets.fromLTRB(20, 20, 20, 0.0),
                         decoration: BoxDecoration(
                           color: snapshot.getSelectedUserMode == 0
-                              ? Colors.teal.withOpacity(0.7)
+                              ? Colors.teal.withOpacity(0.5)
                               : Colors.white,
                           boxShadow: [
                             BoxShadow(
@@ -43,8 +44,8 @@ class _UserModeSelectionSCreenState extends State<UserModeSelectionSCreen> {
                           ],
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Image.network(
-                          'https://cdn3d.iconscout.com/3d/premium/thumb/teacher-5266574-4403848.png?f=webp',
+                        child: Image.asset(
+                          ImageClass.teacher,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -85,7 +86,7 @@ class _UserModeSelectionSCreenState extends State<UserModeSelectionSCreen> {
                         padding: const EdgeInsets.fromLTRB(20, 20, 20, 0.0),
                         decoration: BoxDecoration(
                           color: snapshot.getSelectedUserMode == 1
-                              ? Colors.teal.withOpacity(0.7)
+                              ? Colors.teal.withOpacity(0.5)
                               : Colors.white,
                           boxShadow: [
                             BoxShadow(
@@ -97,8 +98,8 @@ class _UserModeSelectionSCreenState extends State<UserModeSelectionSCreen> {
                           ],
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Image.network(
-                          'https://cdn3d.iconscout.com/3d/premium/thumb/celebrities-5565614-4715115.png',
+                        child: Image.asset(
+                          ImageClass.student,
                           fit: BoxFit.cover,
                         ),
                       ),

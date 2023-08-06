@@ -44,10 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset(ImageClass.splashIcon
-                    // height: 300,
-                    // width: 300,
-                    ),
+                Image.asset(ImageClass.splashIcon),
                 Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 34, vertical: 16),
