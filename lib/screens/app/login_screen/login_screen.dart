@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   'Login to Kidocave',
                   style: TextStyle(
                     fontSize: 22,
-                    fontFamily: 'Montserrat',
+                    fontFamily: 'Montserrat  ',
                     fontWeight: FontWeight.bold,
                   ),
                 ),
