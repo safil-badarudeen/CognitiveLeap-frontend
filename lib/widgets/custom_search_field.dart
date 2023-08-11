@@ -9,14 +9,14 @@ class CustomSearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      cursorColor: ColorConstant.mainBlack,
+      cursorColor: ColorClass.mainBlack,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(0),
         isDense: true,
         prefixIcon: const Icon(Icons.search),
         hintText: 'Search',
         filled: true,
-        fillColor: ColorConstant.grey15,
+        fillColor: ColorClass.grey15,
         enabledBorder: OutlineInputBorder(
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(10)),

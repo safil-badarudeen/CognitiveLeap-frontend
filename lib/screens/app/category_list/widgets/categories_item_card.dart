@@ -27,7 +27,7 @@ class CategoriesItemCard extends StatelessWidget {
                 fontFamily: 'Mochiy Pop  P One',
                 fontSize: 26,
                 fontWeight: FontWeight.w400,
-                color: ColorConstant.mainWhite),
+                color: ColorClass.mainWhite),
           ),
           Image.asset(
             ImageClass.img_fruits_category,

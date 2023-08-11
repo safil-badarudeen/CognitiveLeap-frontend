@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:students_app/screens/app/category_list/category_list_screen.dart';
 import 'package:students_app/screens/app/user_mode_selection_screen/user_mode_selection_screen.dart';
 import 'package:students_app/utils/color_constants.dart';
 import 'package:students_app/utils/image_constatns.dart';
@@ -32,13 +31,13 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     TextStyle style1 = TextStyle(
         fontFamily: 'Montserrat',
-        color: ColorConstant.mainWhite,
+        color: ColorClass.mainWhite,
         fontSize: 22,
         fontWeight: FontWeight.w600);
     return Scaffold(
       body: SafeArea(
         child: Container(
-          color: ColorConstant.mainWhite,
+          color: ColorClass.mainWhite,
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 34, vertical: 16),
                   decoration: BoxDecoration(
-                      color: ColorConstant.sunray,
+                      color: ColorClass.sunray,
                       borderRadius: BorderRadius.circular(50)),
                   child: Text(
                     'Cognitive Leap',

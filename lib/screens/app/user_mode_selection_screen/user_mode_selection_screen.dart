@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:students_app/provider/home_provider.dart';
 import 'package:students_app/screens/app/category_list/category_list_screen.dart';
+import 'package:students_app/screens/app/teacher_setting/teacher_setting.dart';
 import 'package:students_app/utils/image_constatns.dart';
 
 class UserModeSelectionSCreen extends StatefulWidget {
@@ -136,7 +137,8 @@ class _UserModeSelectionSCreenState extends State<UserModeSelectionSCreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return const CategoriesScreen();
+                          return const TeacherSettingScreen();
+                          // return const CategoriesScreen();
                         },
                       ),
                     );

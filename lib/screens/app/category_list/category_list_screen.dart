@@ -6,10 +6,10 @@ import 'package:students_app/utils/color_constants.dart';
 import 'package:students_app/utils/image_constatns.dart';
 
 List categoriescolorPalette = [
-  ColorConstant.mintyGreen,
-  ColorConstant.dullYellow,
-  ColorConstant.salmonPink,
-  ColorConstant.opal,
+  ColorClass.mintyGreen,
+  ColorClass.dullYellow,
+  ColorClass.salmonPink,
+  ColorClass.opal,
 ];
 
 List categoriesDataList = [
